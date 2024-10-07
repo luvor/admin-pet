@@ -7,10 +7,15 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Loading: typeof import('./src/components/loading.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TablePagination: typeof import('./src/components/TablePagination.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
+    TheLoading: typeof import('./src/components/TheLoading.vue')['default']
+    TheSidebar: typeof import('./src/components/TheSidebar.vue')['default']
+    TruckForm: typeof import('./src/components/TruckForm.vue')['default']
   }
 }

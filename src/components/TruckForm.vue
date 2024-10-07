@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { Truck } from '@/types/models'
+import { ref } from 'vue'
 
 const props = defineProps<{ truckData?: Truck }>()
 const emit = defineEmits(['saved'])
@@ -8,7 +8,9 @@ const emit = defineEmits(['saved'])
 const randomId = Math.floor(Math.random() * 1000)
 
 const truck = ref<Truck>(
-  props.truckData || { id: randomId, plate: '', type: 'General', vin: '' },
+  props.truckData
+    ? { ...props.truckData }
+    : { id: randomId, plate: '', type: 'General', vin: '' },
 )
 
 function handleSubmit() {
@@ -22,6 +24,7 @@ function handleSubmit() {
       <label class="mb-1 block">Plate</label>
       <input
         v-model="truck.plate"
+        name="plate"
         class="w-full border rounded px-2 py-1 dark:bg-gray-800"
       >
     </div>
@@ -29,6 +32,7 @@ function handleSubmit() {
       <label class="mb-1 block">Type</label>
       <select
         v-model="truck.type"
+        name="type"
         class="w-full border rounded px-2 py-1 dark:bg-gray-800"
       >
         <option value="Construction">
@@ -43,6 +47,7 @@ function handleSubmit() {
       <label class="mb-1 block">VIN</label>
       <input
         v-model="truck.vin"
+        name="vin"
         class="w-full border rounded px-3 py-1 dark:bg-gray-800"
       >
     </div>

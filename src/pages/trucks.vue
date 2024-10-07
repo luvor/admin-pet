@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Truck } from '@/types/models'
 import { api } from '@/services/api'
 import { onMounted, ref } from 'vue'
-import type { Truck } from '@/types/models'
 
 const trucks = ref<Truck[]>([])
 

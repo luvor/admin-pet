@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Driver } from '@/types/models'
 import { api } from '@/services/api'
 import { onMounted, ref } from 'vue'
-import type { Driver } from '@/types/models'
 
 const drivers = ref<Driver[]>([])
 

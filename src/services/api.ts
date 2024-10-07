@@ -1,6 +1,6 @@
-import { driverGenerator, truckGenerator } from '@/utils/mock'
 import type { Driver, Truck } from '@/types/models'
 import type { PaginatedResponse, PaginationParams } from '@/types/utils'
+import { driverGenerator, truckGenerator } from '@/utils/mock'
 
 const trucks = useStorage(
   'trucks',

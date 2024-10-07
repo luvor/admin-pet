@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { api } from '@/services/api'
 import type { Truck } from '@/types/models'
+import { api } from '@/services/api'
 
 const router = useRouter()
 

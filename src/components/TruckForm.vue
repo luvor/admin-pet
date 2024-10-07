@@ -5,8 +5,10 @@ import type { Truck } from '@/types/models'
 const props = defineProps<{ truckData?: Truck }>()
 const emit = defineEmits(['saved'])
 
+const randomId = Math.floor(Math.random() * 1000)
+
 const truck = ref<Truck>(
-  props.truckData || { id: 0, plate: '', type: 'General', vin: '' },
+  props.truckData || { id: randomId, plate: '', type: 'General', vin: '' },
 )
 
 function handleSubmit() {
@@ -15,14 +17,20 @@ function handleSubmit() {
 </script>
 
 <template>
-  <form class="rounded bg-white p-4 shadow-md" @submit.prevent="handleSubmit">
+  <form class="max-w-md" @submit.prevent="handleSubmit">
     <div class="mb-4">
       <label class="mb-1 block">Plate</label>
-      <input v-model="truck.plate" class="w-full border rounded px-3 py-2">
+      <input
+        v-model="truck.plate"
+        class="w-full border rounded px-2 py-1 dark:bg-gray-800"
+      >
     </div>
     <div class="mb-4">
       <label class="mb-1 block">Type</label>
-      <select v-model="truck.type" class="w-full border rounded px-3 py-2">
+      <select
+        v-model="truck.type"
+        class="w-full border rounded px-2 py-1 dark:bg-gray-800"
+      >
         <option value="Construction">
           Construction
         </option>
@@ -33,12 +41,12 @@ function handleSubmit() {
     </div>
     <div class="mb-4">
       <label class="mb-1 block">VIN</label>
-      <input v-model="truck.vin" class="w-full border rounded px-3 py-2">
+      <input
+        v-model="truck.vin"
+        class="w-full border rounded px-3 py-1 dark:bg-gray-800"
+      >
     </div>
-    <button
-      type="submit"
-      class="rounded bg-green-500 px-4 py-2 text-white font-semibold hover:bg-green-600"
-    >
+    <button type="submit" class="btn">
       Save
     </button>
   </form>

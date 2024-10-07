@@ -51,7 +51,7 @@ function logout() {
         class="w-full flex items-center gap-2 rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
         @click="logout"
       >
-        <div class="i-carbon i-carbon-logout" />
+        <div class="i-carbon-logout" />
         <span>Logout</span>
       </button>
     </div>

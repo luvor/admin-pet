@@ -112,7 +112,7 @@ onMounted(async () => {
       <TablePagination
         :current-page="page"
         :per-page="limit"
-        :total-pages="Math.round(total / limit)"
+        :total-pages="Math.ceil(total / limit)"
         :next-page="handleNextPage"
         :prev-page="handlePrevPage"
       />

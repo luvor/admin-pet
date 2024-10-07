@@ -1,28 +1,30 @@
-// src/stores/auth.ts
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 
 export const useAuthStore = defineStore('auth', () => {
-  const isAuthenticated = ref<boolean>(false)
+  // INFO: useStorage это хук, который дает реактивность в localStorage
+  const isAuthenticated = useStorage('isAuthenticated', false, localStorage)
 
-  function login(username: string, password: string) {
-    // Mock authentication
-    if (username === 'admin' && password === 'password') {
-      isAuthenticated.value = true
-      localStorage.setItem('isAuthenticated', 'true')
-      return true
-    }
-    return false
+  async function login(username: string, password: string) {
+    return new Promise<{
+      isAuthenticated: boolean
+    }>((resolve, reject) => {
+      setTimeout(() => {
+        if (username === 'admin' && password === 'admin') {
+          isAuthenticated.value = true
+          resolve({
+            isAuthenticated: true,
+          })
+        }
+        else {
+          reject(new Error('Invalid username or password.'))
+        }
+      }, 300)
+    })
   }
 
   function logout() {
     isAuthenticated.value = false
-    localStorage.removeItem('isAuthenticated')
   }
 
-  function checkAuth() {
-    isAuthenticated.value = localStorage.getItem('isAuthenticated') === 'true'
-  }
-
-  return { isAuthenticated, login, logout, checkAuth }
+  return { isAuthenticated, login, logout }
 })

@@ -13,17 +13,21 @@ const loading = ref(false)
 
 function loadTrucks(page: number, limit: number) {
   loading.value = true
-  api.getTrucks({
-    page,
-    limit,
-  }).then((res) => {
-    trucks.value = res.data
-    total.value = res.total
-  }).catch(() => {
-    loading.value = false
-  }).finally(() => {
-    loading.value = false
-  })
+  api
+    .getTrucks({
+      page,
+      limit,
+    })
+    .then((res) => {
+      trucks.value = res.data
+      total.value = res.total
+    })
+    .catch(() => {
+      loading.value = false
+    })
+    .finally(() => {
+      loading.value = false
+    })
 }
 
 function handleNextPage() {
@@ -65,7 +69,11 @@ onMounted(async () => {
       </thead>
       <!-- skeleton -->
       <tbody v-if="loading">
-        <tr v-for="i in 10" :key="i" class="grid grid-cols-[1fr_2fr_2fr_4fr] w-full border-b">
+        <tr
+          v-for="i in 10"
+          :key="i"
+          class="grid grid-cols-[1fr_2fr_2fr_4fr] w-full border-b"
+        >
           <td class="px-4 py-2">
             <div class="h-6 w-8 animate-pulse rounded bg-gray-200" />
           </td>
@@ -81,7 +89,11 @@ onMounted(async () => {
         </tr>
       </tbody>
       <tbody v-else>
-        <tr v-for="truck in trucks" :key="truck.id" class="grid grid-cols-[1fr_2fr_2fr_4fr] w-full border-b">
+        <tr
+          v-for="truck in trucks"
+          :key="truck.id"
+          class="grid grid-cols-[1fr_2fr_2fr_4fr] w-full border-b"
+        >
           <td class="px-4 py-2">
             {{ truck.id }}
           </td>
@@ -107,3 +119,12 @@ onMounted(async () => {
     </table>
   </div>
 </template>
+
+<route lang="json">
+{
+  "meta": {
+    "requiresAuth": true,
+    "showSidebar": true
+  }
+}
+</route>

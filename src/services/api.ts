@@ -1,4 +1,3 @@
-// src/services/api.ts
 import { driverGenerator, truckGenerator } from '@/utils/mock'
 import type { Driver, Truck } from '@/types/models'
 import type { PaginatedResponse, PaginationParams } from '@/types/utils'
@@ -11,7 +10,9 @@ export const api = {
     const start = (params.page - 1) * params.limit
     const end = params.page * params.limit
     const total = trucks.length
-    return new Promise<PaginatedResponse<Truck>>(resolve => setTimeout(() => resolve({ data: trucks.slice(start, end), total }), 500))
+    return new Promise<PaginatedResponse<Truck>>(resolve =>
+      setTimeout(() => resolve({ data: trucks.slice(start, end), total }), 500),
+    )
   },
   addTruck: async (truck: Truck): Promise<void> => {
     trucks.push(truck)
@@ -32,7 +33,12 @@ export const api = {
     const start = (params.page - 1) * params.limit
     const end = params.page * params.limit
     const total = drivers.length
-    return new Promise<PaginatedResponse<Driver>>(resolve => setTimeout(() => resolve({ data: drivers.slice(start, end), total }), 500))
+    return new Promise<PaginatedResponse<Driver>>(resolve =>
+      setTimeout(
+        () => resolve({ data: drivers.slice(start, end), total }),
+        500,
+      ),
+    )
   },
   addDriver: async (driver: Driver): Promise<void> => {
     drivers.push(driver)

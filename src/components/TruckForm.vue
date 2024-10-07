@@ -1,4 +1,3 @@
-<!-- src/components/TruckForm.vue -->
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Truck } from '@/types/models'
@@ -11,7 +10,6 @@ const truck = ref<Truck>(
 )
 
 function handleSubmit() {
-  // Handle save logic
   emit('saved', truck.value)
 }
 </script>

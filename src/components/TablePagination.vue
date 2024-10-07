@@ -12,16 +12,10 @@ defineProps<Props>()
 
 <template>
   <div class="flex items-center justify-between gap-4 p-4">
-    <button
-      class="icon-btn"
-      :disabled="currentPage === 1"
-      @click="prevPage"
-    >
+    <button class="icon-btn" :disabled="currentPage === 1" @click="prevPage">
       <div class="i-carbon-chevron-left" />
     </button>
-    <span>
-      Page {{ currentPage }} of {{ totalPages }}
-    </span>
+    <span> Page {{ currentPage }} of {{ totalPages }} </span>
     <button
       class="icon-btn"
       :disabled="currentPage === totalPages"
